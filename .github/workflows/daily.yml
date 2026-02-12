@@ -22,9 +22,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install requests
+        pip install moralis  # ➕ اضافه شد - برای Moralis SDK
     
     - name: 📋 لیست فایل‌ها (برای اطمینان)
       run: ls -la
     
     - name: 🚀 اجرای ربات پتانسیل‌یاب
+      env:
+        MORALIS_API_KEY: ${{ secrets.MORALIS_API_KEY }}  # ➕ اضافه شد - API Key امن
       run: python daily_explosive_finder.py
