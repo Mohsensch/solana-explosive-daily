@@ -1,0 +1,30 @@
+name: Daily Explosive Finder
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # هر روز ساعت ۹ صبح UTC (۱۲:۳۰ ظهر تهران)
+  workflow_dispatch:       # برای اجرای دستی
+
+jobs:
+  find-explosives:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 دریافت کد از مخزن
+      uses: actions/checkout@v4
+    
+    - name: 🐍 نصب پایتون
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: 📦 نصب کتابخانه‌های مورد نیاز
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+    
+    - name: 📋 لیست فایل‌ها (برای اطمینان)
+      run: ls -la
+    
+    - name: 🚀 اجرای ربات پتانسیل‌یاب
+      run: python daily_explosive_finder.py
