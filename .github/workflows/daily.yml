@@ -29,5 +29,5 @@ jobs:
     
     - name: 🚀 اجرای ربات پتانسیل‌یاب
       env:
-        MORALIS_API_KEY: ${{ secrets.MORALIS_API_KEY }}  # ➕ اضافه شد - API Key امن
+        MORALIS_API_KEY: ${{ secrets.MORALIS_API_KEY }}
       run: python daily_explosive_finder.py
